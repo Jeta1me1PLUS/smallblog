@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <title>注册</title>
+        <%- include head %>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <h3>注册</h3>
+        <div class="form-box">
+            <form action="/users/regist" method="post">
+                <input type="text" name="username" value="" placeholder="please input">
+                <input type="password" name="password" value="" placeholder="mima">
+                <input type="password" name="password2" value="" placeholder="please queren">
+                <input type="submit" name="" value="注册">
+            </form>
+            <div>已有账号 <a href="/login">登录</a></div>
+        </div>
+        <script src="" async defer></script>
+    </body>
+</html>
