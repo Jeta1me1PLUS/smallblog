@@ -5,7 +5,7 @@ var model = require('../model');
 router.get('/', function(req, res, next) {
   model.connect(function(db){
     db.collection('users').find().toArray(function(err,docs){
-      console.log('users',docs)
+      // console.log('users',docs)
       res.render('index',{title:'Express'});
     })
   })

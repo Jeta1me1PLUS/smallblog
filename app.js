@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session =require("express-session");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -18,6 +19,28 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//sess的配置
+app.use(session({
+  secret: 'wangan projiect',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge:1000*60*5}//指定绘画有效时常
+}))
+//拦截
+app.get('*',function(req,res,next){
+  var username =req.session.username
+  var path=req.path
+  // console.log(path)
+  if (path !='/login' && path != 'regist'){
+    if (!username){
+      res.redirect('/login')
+    }
+  }
+  console.log('session',username)
+
+  next()
+})
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

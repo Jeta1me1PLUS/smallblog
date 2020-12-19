@@ -39,6 +39,8 @@ router.post('/login',function(req,res,next){
         res.redirect('/login')
       }else{
         if (docs.length > 0){
+          //登录成功，进行session存储
+          req.session.username =data.username
           res.redirect('/')
         }else{
           res.redirect('/login')
