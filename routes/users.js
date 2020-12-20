@@ -51,4 +51,10 @@ router.post('/login',function(req,res,next){
   console.log(data)
   
 })
+
+//退出登录
+router.get('/logout',function(req,res,next){
+  req.session.username=null
+  res.redirect('/login')
+})
 module.exports = router;
