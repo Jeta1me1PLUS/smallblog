@@ -21,4 +21,9 @@ router.get('/regist',function(req,res,next){
 router.get('/login',function(req,res,next){
   res.render('login',{})
 })
+//写文章
+router.get('/write',function(req,res,next){
+  var username =req.session.username
+  res.render('write',{username:username})
+})
 module.exports = router;
