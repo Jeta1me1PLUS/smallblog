@@ -31,10 +31,14 @@ router.get("/", function (req, res, next) {
             .limit(pageSize)
             .skip((page - 1) * pageSize)
             .toArray(function (err, docs2) {
-              docs2.map(function (ele, index) {
-                ele["time"] = moment(ele.id).format("YYYY-MM-DD HH:mm:ss");
-              });
-              data.list = docs2;
+              if (docs2.length == 0) {
+                res.redirect("/?page=" + (page - 1 || 1));
+              } else {
+                docs2.map(function (ele, index) {
+                  ele["time"] = moment(ele.id).format("YYYY-MM-DD HH:mm:ss");
+                });
+                data.list = docs2;
+              }
               res.render("index", { username: username, data: data });
             });
         });

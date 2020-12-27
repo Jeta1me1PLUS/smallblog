@@ -20,4 +20,20 @@ router.post("/add", function (req, res, next) {
     });
   });
 });
+//删除文章
+router.get("/delete", function (req, res, next) {
+  var id = parseInt(req.query.id);
+  var page = req.query.page;
+  // console.log(id, page);
+  model.connect(function (db) {
+    db.collection("articles").deleteOne({ id: id }, function (err, ret) {
+      if (err) {
+        console.log("shibai");
+      } else {
+        console.log("ok");
+      }
+      res.redirect("/?page=" + page);
+    });
+  });
+});
 module.exports = router;
